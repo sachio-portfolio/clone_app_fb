@@ -3,6 +3,16 @@
     <div class="col-xs-12">
       <h1>アカウント登録</h1>
     </div>
+    <% if @user.errors.any? %>
+      <div class="col-xs-12" id="error_explanation">
+        <h3>下記の <%= @user.errors.count %>つのエラーにより、<%= @user.name %> さんを登録できませんでした</h3>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="col-xs-12">
       <h5>簡単に登録できます</h5>
     </div>
