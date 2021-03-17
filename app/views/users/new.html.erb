@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row signup">
+    <div class="col-xs-12">
+      <h1>アカウント登録</h1>
+    </div>
+    <div class="col-xs-12">
+      <h5>簡単に登録できます</h5>
+    </div>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="col-xs-12" >
+        <%= f.text_field :name, placeholder: "名前" %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.email_field :email, placeholder: "メールアドレス" %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.password_field :password, placeholder: "パスワード" %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.password_field :password_confirmation, placeholder: "上記と同じパスワード" %>
+      </div>
+      <div class="col-xs-12">
+        <p>[アカウント登録]をクリックすることで、利用規約、データに関するポリシー 、Cookieポリシーに同意するものとします。サービスに関連してCloneAppFBからSMS通知が届くことがありますが、これはいつでもオフに設定できます。</p>
+      </div>
+      <div class="col-xs-12">
+        <%= f.submit "アカウント登録" %>
+      </div>
+    <% end %>
+  </div>
+</div>
