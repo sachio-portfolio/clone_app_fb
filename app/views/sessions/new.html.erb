@@ -11,13 +11,13 @@
     <%= f.password_field :password, placeholder: "パスワード" %>
   </div>
   <div class="">
-    <%= f.password_field :password_confirmation, placeholder: "パスワード再入力" %>
-  </div>
-  <div class="">
     <%= f.submit "ログイン" %>
   </div>
   <div class="">
     <%= link_to "パスワードを忘れた場合", "#" %>
+  </div>
+  <div class="">
+    <%= link_to "新しいアカウントを作成", new_user_path  %>
   </div>
 </div>
 <% end %>
