@@ -1,0 +1,67 @@
+<div class="main container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-6">
+        <div class="mypage_top">
+          <h1><%= current_user.name %></h1>
+          <%= link_to "自己紹介を追加", "#" %>
+        </div>
+        <div class="mypage_header">
+          <ul>
+            <li>投稿</li>
+            <li>その他</li>
+          </ul>
+          <ul>
+            <li>ストーリーズに追加</li>
+            <li>プロフィールを編集</li>
+          </ul>
+        </div>
+        <div class="profile">
+          <h3>自分のプロフィール</h3>
+          <p>プロフィール情報を追加して、もっとお友達を見つけたり、自己紹介できます。</p>
+          <%= link_to "スタート", "#" %>
+        </div>
+        <div class="self_introduction">
+          <h3>自己紹介</h3>
+          <%= link_to "詳細を編集", "#" %>
+          <%= link_to "趣味を追加", "#" %>
+          <%= link_to "注目コンテンツを編集", "#" %>
+        </div>
+        <div class="my_image">
+          <h3>写真</h3>
+          <%= link_to "全ての写真を見る", "#" %>
+        <% @pictures.each do |picture| %>
+          <%= picture.image %>
+        <% end %>
+        </div>
+        <div class="post">
+          <%= link_to "◉", user_path(current_user.id) %>
+          <%= link_to "#{current_user.name}さん、その気持ち、シェアしよう", new_picture_path %>
+          <ul>
+            <li>ライブ動画</li>
+            <li>写真・動画</li>
+            <li>気分・アクティビティ</li>
+          </ul>
+        </div>
+        <div class="my_pictures">
+          <h3>投稿</h3>
+          <div class="">
+          <% @pictures.each do |picture| %>
+            <p><%= current_user.name %></p>
+            <p><%= picture.content %></p>
+            <%= picture.image %>
+            <ul>
+              <li>いいね！</li>
+              <li>コメントする</li>
+            </ul>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3">
+      </div>
+    </div>
+  </div>
+</div>
