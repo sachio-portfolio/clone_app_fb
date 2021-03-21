@@ -1,9 +1,8 @@
 class PicturesController < ApplicationController
-  include PicturesHelper
   before_action :select_picture, only: [:edit, :update, :destroy]
   def index
     @pictures = Picture.all
-    @recommend = random_recommend(@pictures)
+    @recommend = @pictures.sample(2)
   end
   def new
     @picture = Picture.new
@@ -11,12 +10,13 @@ class PicturesController < ApplicationController
   def create
     @picture = current_user.pictures.build(picture_params)
     if @picture.save
-      redirect_to pictures_path
+      redirect_to user_path(current_user.id)
     else
       render :new
     end
   end
   def show
+
   end
   def edit
   end

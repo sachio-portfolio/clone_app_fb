@@ -22,9 +22,15 @@
         </div>
         <div class="recommend">
           <p>おすすめの投稿</p>
-          <%= @recommend.user_id %>
-          <%= @recommend.content %>
-          <%= @recommend.image %>
+          <p><%= @recommend[0].user.name %></p>
+          <p><%= @recommend[0].content %></p>
+          <%= @recommend[0].image %>
+        </div>
+        <div class="recommend">
+          <p>おすすめの投稿</p>
+          <p><%= @recommend[1].user.name %></p>
+          <p><%= @recommend[1].content %></p>
+          <%= @recommend[1].image %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4 col-md-3">
