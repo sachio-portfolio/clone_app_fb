@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-  include PicturesHelper
   before_action :select_picture, only: [:edit, :update, :destroy]
   def index
     @pictures = Picture.all
