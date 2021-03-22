@@ -24,13 +24,17 @@
           <p>おすすめの投稿</p>
           <p><%= @recommend[0].user.name %></p>
           <p><%= @recommend[0].content %></p>
-          <%= @recommend[0].image %>
+          <% if @recommend[0].image.present? %>
+            <%= image_tag @recommend[0].image.url, height: "300" %>
+          <% end %>
         </div>
         <div class="recommend">
           <p>おすすめの投稿</p>
           <p><%= @recommend[1].user.name %></p>
           <p><%= @recommend[1].content %></p>
-          <%= @recommend[1].image %>
+          <% if @recommend[1].image.present? %>
+            <%= image_tag @recommend[1].image.url, height: "300" %>
+          <% end %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4 col-md-3">

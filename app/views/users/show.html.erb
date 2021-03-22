@@ -32,9 +32,11 @@
         <div class="my_image">
           <h3>写真</h3>
           <%= link_to "全ての写真を見る", "#" %>
-        <% @pictures.each do |picture| %>
-          <%= picture.image %>
-        <% end %>
+          <% @some_pic.each do |picture| %>
+          <div class="sample_image">
+            <%= image_tag picture.image.url, height: "100" %>
+          </div>
+          <% end %>
         </div>
         <div class="post">
           <%= link_to "◉", user_path(current_user.id) %>
@@ -51,7 +53,9 @@
           <% @pictures.each do |picture| %>
             <p><%= current_user.name %></p>
             <p><%= picture.content %></p>
-            <%= picture.image %>
+            <% if picture.image.present? %>
+              <%= image_tag picture.image.url, height: "300" %>
+            <% end %>
             <ul>
               <li>いいね！</li>
               <li>コメントする</li>

@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
   end
   private
   def picture_params
-    params.require(:picture).permit(:content, :image, :user_id)
+    params.require(:picture).permit(:content, :image, :image_cache, :user_id)
   end
   def select_picture
     @picture = Picture.find_by(params[:id])
