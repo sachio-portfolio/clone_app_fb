@@ -51,7 +51,8 @@
           <h3>投稿</h3>
           <div class="">
           <% @pictures.each do |picture| %>
-            <p><%= current_user.name %></p>
+            <%= link_to "詳細", picture_path(picture.id) %>
+            <p><%= picture.user.name %></p>
             <p><%= picture.content %></p>
             <% if picture.image.present? %>
               <%= image_tag picture.image.url, height: "300" %>

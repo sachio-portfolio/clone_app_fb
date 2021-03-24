@@ -1,0 +1,24 @@
+<div class="">
+  <div class="">
+    <div class="">
+      <div class="my_pictures">
+        <h3>投稿</h3>
+        <div class="">
+          <p><%= @picture.user.name %></p>
+          <p><%= @picture.content %></p>
+          <% if @picture.image.present? %>
+            <%= image_tag @picture.image.url, height: "300" %>
+          <% end %>
+          <ul>
+            <li>いいね！</li>
+            <li>コメントする</li>
+          </ul>
+          <ul>
+            <li><%= link_to "修正", edit_picture_path(@picture.id) %></li>
+            <li><%= link_to "削除", picture_path(@picture.id), method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @pictures = current_user.pictures.where.not(image: nil).order("id DESC")
-    @some_pic = @pictures.sample(3)
+    @sample_pic = current_user.pictures.where.not(image: nil).order("id DESC")
+    @some_pic = @sample_pic.sample(3)
+    @pictures = current_user.pictures.all
   end
   private
   def user_params

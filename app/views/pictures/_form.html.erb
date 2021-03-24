@@ -1,0 +1,16 @@
+<%= link_to "◉", user_path(current_user.id) %>
+<p><%= current_user.name %></p>
+<%= form_with(model: @picture, url: new_or_edit, local: true) do |f| %>
+  <div class="picture_content">
+    <%= f.text_field :content %>
+    <%= image_tag @picture.image.url, height: "300" if @picture.image && @picture.image.url %>
+  </div>
+  <div class="picture_image">
+    <p>投稿に追加</p>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="picture_post">
+    <%= f.submit "投稿" %>
+  </div>
+<% end %>
