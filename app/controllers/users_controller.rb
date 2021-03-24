@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+  before_action :forbid_login_user, only: [:new, :create]
   def new
     @user = User.new
   end
@@ -12,9 +13,10 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @sample_pic = current_user.pictures.where.not(image: nil).order("id DESC")
-    @some_pic = @sample_pic.sample(3)
-    @pictures = current_user.pictures.all
+    @user = User.find(params[:id])
+    pictures = @user.pictures.where.not(image: nil)
+    @some_picture = pictures.sample(3)
+    @pictures = @user.pictures.all.order("id DESC")
   end
   private
   def user_params

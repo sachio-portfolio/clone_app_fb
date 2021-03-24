@@ -22,18 +22,18 @@
         </div>
         <div class="recommend">
           <p>おすすめの投稿</p>
-          <p><%= @recommend[0].user.name %></p>
-          <p><%= @recommend[0].content %></p>
-          <% if @recommend[0].image.present? %>
-            <%= image_tag @recommend[0].image.url, height: "300" %>
+          <p><%= link_to @recommend_picture[0].user.name, user_path(id: @recommend_picture[0].user_id) %></p>
+          <p><%= @recommend_picture[0].content %></p>
+          <% if @recommend_picture[0].image.present? %>
+            <%= image_tag @recommend_picture[0].image.url, height: "300" %>
           <% end %>
         </div>
         <div class="recommend">
           <p>おすすめの投稿</p>
-          <p><%= @recommend[1].user.name %></p>
-          <p><%= @recommend[1].content %></p>
-          <% if @recommend[1].image.present? %>
-            <%= image_tag @recommend[1].image.url, height: "300" %>
+          <p><%= link_to @recommend_picture[1].user.name, user_path(id: @recommend_picture[1].user_id) %></p>
+          <p><%= @recommend_picture[1].content %></p>
+          <% if @recommend_picture[1].image.present? %>
+            <%= image_tag @recommend_picture[1].image.url, height: "300" %>
           <% end %>
         </div>
       </div>

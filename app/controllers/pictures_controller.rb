@@ -1,8 +1,8 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
-    @pictures = Picture.all
-    @recommend = @pictures.sample(2)
+    pictures = Picture.all
+    @recommend_picture = pictures.sample(2)
   end
   def new
     if params[:back]
@@ -39,6 +39,8 @@ class PicturesController < ApplicationController
     end
   end
   def destroy
+    @picture.destroy
+    redirect_to user_path(current_user.id)
   end
   private
   def picture_params
