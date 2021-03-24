@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :forbid_login_user, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include UsersHelper
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def new
     @user = User.new
   end
@@ -13,13 +16,29 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @user = User.find(params[:id])
     pictures = @user.pictures.where.not(image: nil)
     @some_picture = pictures.sample(3)
-    @pictures = @user.pictures.all.order("id DESC")
+    @pictures =
+    @user.pictures.all.order("id DESC")
+  end
+  def edit
+  end
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
+  end
+  def destroy
+    @user.destroy
+    redirect_to :new
   end
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  def set_user
+    @user = User.find(params[:id])
   end
 end

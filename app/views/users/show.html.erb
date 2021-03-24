@@ -16,7 +16,8 @@
             </ul>
             <ul>
               <li>ストーリーズに追加</li>
-              <li>プロフィールを編集</li>
+              <li><%= link_to "プロフィールを編集", edit_user_path(@user.id) %></li>
+              <li><%= link_to "アカウントを削除", user_path(@user.id), method: :delete, data: {confirm: '本当に削除して良いですか？'} %></li>
             </ul>
           </div>
           <div class="profile">
