@@ -1,0 +1,32 @@
+<div class="">
+  <% if @user.errors.any? %>
+    <div class="" id="error_explanation">
+      <h3>下記の <%= @user.errors.count %>つのエラーにより、<%= @user.name %> さんを登録できませんでした</h3>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<div class="">
+  <h5>簡単に登録できます</h5>
+</div>
+<%= form_with(model: @user, local: true) do |f| %>
+<div class="" >
+  <%= f.text_field :name, placeholder: "名前" %>
+</div>
+<div class="">
+  <%= f.email_field :email, placeholder: "メールアドレス" %>
+</div>
+<div class="">
+  <%= f.password_field :password, placeholder: "パスワード" %>
+</div>
+<div class="">
+  <%= f.password_field :password_confirmation, placeholder: "パスワード再入力" %>
+</div>
+<div class="">
+  <%= f.submit "アカウント登録" %>
+</div>
+<% end %>
