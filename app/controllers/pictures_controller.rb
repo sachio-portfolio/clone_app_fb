@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  include PicturesHelper
+  before_action :ensure_correct_user_for_picture, only: [:edit, :update, :destroy]
   def index
     pictures = Picture.all
     @recommend_picture = pictures.sample(2)
