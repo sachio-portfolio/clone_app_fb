@@ -1,22 +1,33 @@
 class PicturesController < ApplicationController
-  before_action :select_picture, only: [:edit, :update, :destroy]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
-    @pictures = Picture.all
-    @recommend = @pictures.sample(2)
+    pictures = Picture.all
+    @recommend_picture = pictures.sample(2)
   end
   def new
-    @picture = Picture.new
+    if params[:back]
+      @picture = current_user.pictures.new(picture_params)
+    else
+      @picture = current_user.pictures.new
+    end
   end
   def create
     @picture = current_user.pictures.build(picture_params)
-    if @picture.save
-      redirect_to user_path(current_user.id)
-    else
+    if params[:back]
       render :new
+    else
+      if @picture.save
+        redirect_to user_path(current_user.id)
+      else
+        render :new
+      end
     end
   end
+  def confirm
+    @picture = current_user.pictures.new(picture_params)
+    render :new if @picture.invalid?
+  end
   def show
-
   end
   def edit
   end
@@ -28,12 +39,14 @@ class PicturesController < ApplicationController
     end
   end
   def destroy
+    @picture.destroy
+    redirect_to user_path(current_user.id)
   end
   private
   def picture_params
-    params.require(:picture).permit(:content, :image, :image_cache, :user_id)
+    params.require(:picture).permit(:content, :image, :image_cache)
   end
-  def select_picture
-    @picture = Picture.find_by(params[:id])
+  def set_picture
+    @picture = Picture.find(params[:id])
   end
 end
