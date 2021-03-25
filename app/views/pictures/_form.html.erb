@@ -1,3 +1,15 @@
+<div class="">
+  <% if @picture.errors.any? %>
+    <div class="" id="error_explanation">
+      <h3>下記の <%= @picture.errors.count %>つのエラーにより、投稿できませんでした</h3>
+      <ul>
+      <% @picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
 <%= link_to "◉", user_path(current_user.id) %>
 <p><%= current_user.name %></p>
 <%= form_with(model: @picture, url: new_or_edit, local: true) do |f| %>

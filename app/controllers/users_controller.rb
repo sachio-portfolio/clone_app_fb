@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
   def destroy
     @user.destroy
-    redirect_to :new
+    redirect_to new_user_path
   end
   private
   def user_params

@@ -6,4 +6,10 @@ module PicturesHelper
       picture_path
     end
   end
+  def ensure_correct_user_for_picture
+    picture = Picture.find(params[:id])
+    if current_user.id != picture.user_id.to_i
+      redirect_to pictures_path
+    end
+  end
 end
