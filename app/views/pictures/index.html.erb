@@ -1,44 +1,39 @@
 <div class="main container-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-3">
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6">
+      <div class="stories panel panel-default">
+        <h3>ストーリーズを作成</h3>
+        <p>写真や動画、メッセージなどをシェアしよう。</p>
       </div>
-      <div class="col-xs-12 col-sm-8 col-md-6">
-        <div class="stories">
-          <h3>ストーリーズを作成</h3>
-          <p>写真や動画、メッセージなどをシェアしよう。</p>
-        </div>
-        <div class="post">
-          <%= link_to "◉", user_path(current_user.id) %>
-          <%= link_to "#{current_user.name}さん、その気持ち、シェアしよう", new_picture_path %>
-          <ul>
-            <li>ライブ動画</li>
-            <li>写真・動画</li>
-            <li>気分・アクティビティ</li>
-          </ul>
-        </div>
-        <div class="make_room">
-          <%= link_to "ルームを作成しよう", "#" %>
-        </div>
-        <div class="recommend">
-          <p>おすすめの投稿</p>
-          <p><%= link_to @recommend_picture[0].user.name, user_path(id: @recommend_picture[0].user_id) %></p>
-          <p><%= @recommend_picture[0].content %></p>
-          <% if @recommend_picture[0].image.present? %>
-            <%= image_tag @recommend_picture[0].image.url, height: "300" %>
-          <% end %>
-        </div>
-        <div class="recommend">
-          <p>おすすめの投稿</p>
-          <p><%= link_to @recommend_picture[1].user.name, user_path(id: @recommend_picture[1].user_id) %></p>
-          <p><%= @recommend_picture[1].content %></p>
-          <% if @recommend_picture[1].image.present? %>
-            <%= image_tag @recommend_picture[1].image.url, height: "300" %>
-          <% end %>
-        </div>
+      <div class="post panel panel-default">
+        <span class="user_icon glyphicon glyphicon-user"></span>
+        <%= link_to "#{current_user.name}さん、その気持ち、シェアしよう", new_picture_path %>
+        <ul class="list-inline list-unstyled">
+          <li>ライブ動画</li>
+          <li>写真・動画</li>
+          <li>気分・アクティビティ</li>
+        </ul>
       </div>
-      <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="make_room panel panel-default">
+        <%= link_to "ルームを作成しよう", "#" %>
       </div>
+      <% @recommend_picture.each do |recommend| %>
+        <div class="recommend panel panel-default">
+          <p id="recommend">おすすめの投稿</p>
+          <p class="picture_username"><%= link_to recommend.user.name, user_path(id: recommend.user_id) %></p>
+          <p class="picture_timestamp"><small><%=  recommend.updated_at.strftime("%Y-%m-%d %H:%M") %></small></p>
+          <p class="picture_content lead"><%= recommend.content %></p>
+          <div class="picture_image">
+            <% if recommend.image.present? %>
+              <%= image_tag recommend.image.url, height: "300" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
     </div>
   </div>
 </div>
