@@ -10,38 +10,35 @@
             <%= link_to "自己紹介を追加", "#" %>
           </div>
           <div class="mypage_header">
-            <ul>
+            <ul class="list-inline list-unstyled">
               <li>投稿</li>
               <li>その他</li>
             </ul>
-            <ul>
+            <ul  class="list-inline list-unstyled">
               <li>ストーリーズに追加</li>
               <li><%= link_to "プロフィールを編集", edit_user_path(@user.id) %></li>
               <li><%= link_to "アカウントを削除", user_path(@user.id), method: :delete, data: {confirm: '本当に削除して良いですか？'} %></li>
             </ul>
           </div>
-          <div class="profile">
-            <h3>自分のプロフィール</h3>
-            <p>プロフィール情報を追加して、もっとお友達を見つけたり、自己紹介できます。</p>
-            <%= link_to "スタート", "#" %>
-          </div>
-          <div class="self_introduction">
+          <div class="self_introduction panel panel-default">
             <h3>自己紹介</h3>
-            <%= link_to "詳細を編集", "#" %>
-            <%= link_to "趣味を追加", "#" %>
-            <%= link_to "注目コンテンツを編集", "#" %>
+            <button class="btn btn-default btn-block">詳細を編集</button>
+            <button class="btn btn-default btn-block">趣味を追加</button>
+            <button class="btn btn-default btn-block">注目コンテンツを編集</button>
           </div>
-          <div class="post">
-            <%= link_to "◉", user_path(current_user.id) %>
-            <%= link_to "#{current_user.name}さん、その気持ち、シェアしよう", new_picture_path %>
-            <ul>
+          <div class="post panel panel-default">
+            <ul class="list-inline list-unstyled">
+              <li><span class="user_icon glyphicon glyphicon-user"></span></li>
+              <li><%= link_to "#{current_user.name}さん、その気持ち、シェアしよう", new_picture_path %></li>
+            </ul>
+            <ul  class="list-inline list-unstyled">
               <li>ライブ動画</li>
               <li>写真・動画</li>
               <li>気分・アクティビティ</li>
             </ul>
           </div>
         <% end %>
-        <div class="my_image">
+        <div class="my_image panel panel-default">
           <h3>写真</h3>
           <%= link_to "全ての写真を見る", "#" %>
           <% @some_picture.each do |picture| %>
@@ -54,17 +51,22 @@
           <h3>投稿</h3>
           <div class="">
           <% @pictures.each do |picture| %>
-            <%= link_to "詳細", picture_path(picture.id) %>
-            <p><%= picture.user.name %></p>
-            <p><%= picture.content %></p>
-            <% if picture.image.present? %>
-              <%= image_tag picture.image.url, height: "300" %>
+            <div class="panel panel-default">
+              <%= link_to "詳細", picture_path(picture.id) %>
+              <ul class="list-inline list-unstyled">
+                <li><span class="user_icon glyphicon glyphicon-user"></span></li>
+                <li><p class="picture_username"><%= picture.user.name %></li>
+              </ul>
+              <p class="picture_content lead"><%= picture.content %></p>
+              <% if picture.image.present? %>
+                <%= image_tag picture.image.url, height: "300" %>
+              <% end %>
+              <ul class="list-inline list-unstyled">
+                <li><%= link_to "いいね！", "#" %></li>
+                <li><%= link_to "コメントする", "#" %></li>
+              </ul>
+            </div>
             <% end %>
-            <ul>
-              <li>いいね！</li>
-              <li>コメントする</li>
-            </ul>
-          <% end %>
           </div>
         </div>
       </div>
