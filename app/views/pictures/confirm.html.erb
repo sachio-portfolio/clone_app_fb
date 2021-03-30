@@ -1,13 +1,28 @@
-<h1>確認画面</h1>
-<%= form_with(model: @picture, url: pictures_path, local: true) do |f| %>
-  <%= @picture.content %>
-  <%= f.hidden_field :content %>
-  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.submit "投稿" %>
-<% end %>
-<%= form_with(model: @picture, url: new_picture_path, local: true, method: "get") do |f| %>
-  <%= f.hidden_field :content %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.submit "戻る", name: "back" %>
-<% end %>
+<div class="container-fluid">
+  <div class="row signup">
+    <div class="col-xs-12 col-md-3">
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6">
+      <div class="panel panel-default">
+        <h1>確認画面</h1>
+        <%= form_with(model: @picture, url: pictures_path, local: true) do |f| %>
+          <%= @picture.content %>
+          <%= f.hidden_field :content %>
+          <%= image_tag @picture.image.url, class: "img-responsive" if @picture.image && @picture.image.url %>
+          <%= f.hidden_field :image_cache %>
+          <label class="send btn btn-default btn-block"><div>
+            <%= f.submit "投稿", class: "send" %>投稿
+          </div></label>
+        <% end %>
+        <%= form_with(model: @picture, url: new_picture_path, local: true, method: "get") do |f| %>
+          <%= f.hidden_field :content %>
+          <%= f.hidden_field :image_cache %>
+          <label class="send btn btn-default btn-block"><div>
+            <%= f.submit "戻る", name: "back", class: "send" %>戻る</div></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+    </div>
+  </div>
+</div>

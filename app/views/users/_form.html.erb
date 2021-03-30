@@ -14,19 +14,19 @@
   <h5>簡単に登録できます</h5>
 </div>
 <%= form_with(model: @user, local: true) do |f| %>
-<div class="" >
-  <%= f.text_field :name, placeholder: "名前" %>
+<div class="form_group" >
+  <%= f.text_field :name, placeholder: "名前", rows: 7, class: "form-control" %>
 </div>
-<div class="">
-  <%= f.email_field :email, placeholder: "メールアドレス" %>
+<div class="form_group" >
+  <%= f.text_field :email, placeholder: "メールアドレス", rows: 7, class: "form-control" %>
 </div>
-<div class="">
-  <%= f.password_field :password, placeholder: "パスワード" %>
+<div class="form_group" >
+  <%= f.password_field :password, placeholder: "パスワード", rows: 7, class: "form-control" %>
 </div>
-<div class="">
-  <%= f.password_field :password_confirmation, placeholder: "パスワード再入力" %>
+<div class="form_group" >
+  <%= f.password_field :password_confirmation, placeholder: "パスワード再入力", rows: 7, class: "form-control" %>
 </div>
-<div class="">
-  <%= f.submit "アカウント登録" %>
-</div>
+<label class="send btn btn-default btn-block"><div>
+  <%= f.submit "投稿", class: "send"%>アカウント登録
+</div></label>
 <% end %>

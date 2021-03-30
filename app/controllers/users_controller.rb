@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   include UsersHelper
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :initial_value, only: [:show]
   def new
     @user = User.new
   end

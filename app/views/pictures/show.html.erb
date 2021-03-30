@@ -15,7 +15,7 @@
         <p class="picture_content lead"><%= @picture.content %></p>
         <div class="picture_image">
           <% if @picture.image.present? %>
-            <%= image_tag @picture.image.url, height: 300 %>
+            <%= image_tag @picture.image.url, class: "img-responsive" %>
           <% end %>
         </div>
         <ul class="list-inline list-unstyled">

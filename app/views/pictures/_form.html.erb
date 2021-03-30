@@ -1,4 +1,4 @@
-<div class="">
+<div class="picture_form">
   <% if @picture.errors.any? %>
     <div class="" id="error_explanation">
       <h3>下記の <%= @picture.errors.count %>つのエラーにより、投稿できませんでした</h3>
@@ -15,18 +15,26 @@
   <li><p class="picture_username"><%= current_user.name %></li>
 </ul>
 <%= form_with(model: @picture, url: new_or_edit, local: true) do |f| %>
-  <div class="picture_content lead">
-    <%= f.text_field :content %>
+  <div class="form_group lead">
+    <%= f.text_area :content, placeholder: @init, rows: 7, class: "form-control picture_content" %>
   </div>
   <div class="picture_image">
-    <%= image_tag @picture.image.url, height: "300" if @picture.image && @picture.image.url %>
+    <%= image_tag @picture.image.url, class: "img-responsive" if @picture.image && @picture.image.url %>
   </div>
-  <div class="picture_image">
-    <p>投稿に追加</p>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+  <div class="image_upload panel panel-default">
+    <ul class="list-inline list-unstyled">
+      <li class="left"><p><strong>投稿に追加</strong></p></li>
+      <li class="right"><p class="not_selected">選択されていません</p></li>
+      <li class="right"><label>
+        <span class="filelabel" title="ファイルを選択">
+          <img src="/image_icon.png" width="26" height="32" alt="＋画像">
+        </span>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      </label></li>
+    </ul>
   </div>
-  <div class="picture_post">
-    <%= f.submit "投稿" %>
-  </div>
+  <label class="send btn btn-default btn-block"><div>
+    <%= f.submit "投稿", class: "send" %>投稿
+  </div></label>
 <% end %>
