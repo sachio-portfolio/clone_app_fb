@@ -11,4 +11,7 @@ class ApplicationController < ActionController::Base
       redirect_to pictures_path
     end
   end
+  def initial_value
+    @init = "#{current_user.name}さん、その気持ち、シェアしよう"
+  end
 end

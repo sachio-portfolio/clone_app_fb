@@ -22,14 +22,18 @@
       <% @recommend_picture.each do |recommend| %>
         <div class="recommend panel panel-default">
           <p id="recommend">おすすめの投稿</p>
-          <p class="picture_username"><%= link_to recommend.user.name, user_path(id: recommend.user_id) %></p>
+          <ul class="list-inline list-unstyled">
+            <li><span class="user_icon glyphicon glyphicon-user"></span></li>
+            <li><p class="picture_username"><%= link_to recommend.user.name, user_path(id: recommend.user_id) %></p></li>
+          </ul>
           <p class="picture_timestamp"><small><%=  recommend.updated_at.strftime("%Y-%m-%d %H:%M") %></small></p>
           <p class="picture_content lead"><%= recommend.content %></p>
           <div class="picture_image">
             <% if recommend.image.present? %>
-              <%= image_tag recommend.image.url, height: "300" %>
+              <%= image_tag recommend.image.url, class: "img-responsive" %>
             <% end %>
           </div>
+          <%= link_to "詳細", picture_path(recommend.id) %>
         </div>
       <% end %>
     </div>

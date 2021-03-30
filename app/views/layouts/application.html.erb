@@ -4,24 +4,22 @@
     <title>CloneAppFb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <ul class="list-inline list-unstyled">
-        <li><%= link_to "FB", pictures_path %></li>
-        <li><%= link_to "HOME", pictures_path %></li>
+        <li class="left"><%= link_to "FB", pictures_path %></li>
+        <li class="left"><%= link_to "HOME", pictures_path %></li>
       </ul>
       <ul class="list-inline list-unstyled">
       <% if logged_in? %>
-        <li><%= link_to "マイページ", user_path(current_user.id) %>
-        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+        <li class="right"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+        <li class="right"><%= link_to "マイページ", user_path(current_user.id) %>
       <% else %>
-        <li><%= link_to "新規登録", new_user_path %></li>
-        <li><%= link_to "ログイン", new_session_path %></li>
+        <li class="right"><%= link_to "ログイン", new_session_path %></li>
+        <li class="right"><%= link_to "新規登録", new_user_path %></li>
       <% end %>
       </ul>
     </header>
@@ -29,5 +27,12 @@
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     <%= yield %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+      $('input').on('change', function () {
+          var file = $(this).prop('files')[0];
+          $('.not_selected').text(file.name);
+      });
+    </script>
   </body>
 </html>

@@ -4,20 +4,22 @@
 </div>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
 <div class="col-xs-12 col-sm-6">
-  <div class="">
-    <%= f.email_field :email, placeholder: "メールアドレス" %>
-  </div>
-  <div class="">
-    <%= f.password_field :password, placeholder: "パスワード" %>
-  </div>
-  <div class="">
-    <%= f.submit "ログイン" %>
-  </div>
-  <div class="">
-    <%= link_to "パスワードを忘れた場合", "#" %>
-  </div>
-  <div class="">
-    <%= link_to "新しいアカウントを作成", new_user_path  %>
+  <div class="panel panel-default">
+    <div class="form_group">
+      <%= f.email_field :email, placeholder: "メールアドレス", rows: 5, class: "form-control" %>
+    </div>
+    <div class="form_group">
+      <%= f.password_field :password, placeholder: "パスワード", rows: 5, class: "form-control" %>
+    </div>
+    <label class="send btn btn-default btn-block"><div>
+      <%= f.submit "ログイン", class: "send"%>ログイン
+    </div></label>
+    <div class="">
+      <%= link_to "パスワードを忘れた場合", "#" %>
+    </div>
+    <div class="">
+      <%= link_to "新しいアカウントを作成", new_user_path  %>
+    </div>
   </div>
 </div>
 <% end %>
