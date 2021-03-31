@@ -15,11 +15,11 @@
       </ul>
       <ul class="list-inline list-unstyled">
       <% if logged_in? %>
+        <li class="right"><%= link_to "マイページ", user_path(current_user.id) %></li>
         <li class="right"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
-        <li class="right"><%= link_to "マイページ", user_path(current_user.id) %>
       <% else %>
-        <li class="right"><%= link_to "ログイン", new_session_path %></li>
         <li class="right"><%= link_to "新規登録", new_user_path %></li>
+        <li class="right"><%= link_to "ログイン", new_session_path %></li>
       <% end %>
       </ul>
     </header>
