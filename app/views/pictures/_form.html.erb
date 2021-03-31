@@ -11,7 +11,7 @@
   <% end %>
 </div>
 <ul class="list-inline list-unstyled">
-  <li><span class="user_icon glyphicon glyphicon-user"></span></li>
+  <li><span class="user_icon glyphicon glyphicon-user" aria-hidden="true"></span></li>
   <li><p class="picture_username"><%= current_user.name %></li>
 </ul>
 <%= form_with(model: @picture, url: new_or_edit, local: true) do |f| %>
