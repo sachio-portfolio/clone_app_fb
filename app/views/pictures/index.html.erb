@@ -33,7 +33,7 @@
           <p class="picture_content lead"><%= recommend.content %></p>
           <div class="picture_image">
             <% if recommend.image.present? %>
-              <%= image_tag recommend.image.url, class: "img-responsive" %>
+              <%= image_tag(recommend.image.url, class: "img-responsive") %>
             <% end %>
           </div>
           <%= link_to "詳細", picture_path(recommend.id) %>

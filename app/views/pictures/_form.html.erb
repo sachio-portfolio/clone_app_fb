@@ -19,7 +19,7 @@
     <%= f.text_area :content, placeholder: @init, rows: 7, class: "form-control picture_content" %>
   </div>
   <div class="picture_image">
-    <%= image_tag @picture.image.url, class: "img-responsive" if @picture.image && @picture.image.url %>
+    <%= image_tag(@picture.image.url, class: "img-responsive") if @picture.image && @picture.image.url %>
   </div>
   <div class="image_upload panel panel-default">
     <ul class="list-inline list-unstyled">

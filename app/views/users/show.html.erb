@@ -44,7 +44,7 @@
           <%= link_to "全ての写真を見る", "#" %>
           <% @some_picture.each do |picture| %>
           <div class="sample_image">
-            <%= image_tag picture.image.url, height: "100" %>
+            <%= image_tag(picture.image.url, height: "100") %>
           </div>
           <% end %>
         </div>
@@ -61,7 +61,7 @@
               <p class="picture_timestamp"><small><%=  picture.updated_at.strftime("%Y-%m-%d %H:%M") %></small></p>
               <p class="picture_content lead"><%= picture.content %></p>
               <% if picture.image.present? %>
-                <%= image_tag picture.image.url, class: "img-responsive" %>
+                <%= image_tag(picture.image.url, class: "img-responsive") %>
               <% end %>
               <ul class="list-inline list-unstyled">
                 <li><%= link_to "いいね！", "#" %></li>
